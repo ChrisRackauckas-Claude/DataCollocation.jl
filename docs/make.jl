@@ -7,7 +7,8 @@ makedocs(
     modules = [DataCollocation],
     pages = [
         "Home" => "index.md",
-        "Smoothed Collocation for Fast Two-Stage Training" => "collocation.md",
+        "Kernel Smoothing for Neural ODE Training" => "collocation.md",
+        "DataInterpolations Methods for Clean Data" => "datainterpolations.md",
         "API Reference" => "Collocation.md",
     ],
     format = Documenter.HTML(
