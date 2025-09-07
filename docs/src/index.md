@@ -1,12 +1,12 @@
-# DataCollocation.jl
+# DataCollocations.jl
 
 **Non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives**
 
-DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
+DataCollocations.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
 
 ## Two Approaches for Data Collocation
 
-DataCollocation.jl provides two different approaches for handling data collocation, each suited for different noise characteristics:
+DataCollocations.jl provides two different approaches for handling data collocation, each suited for different noise characteristics:
 
 ### 1. Kernel Smoothing Methods (For Noisy Data)
 These methods use kernel-based smoothing to handle noisy measurements:
@@ -30,20 +30,20 @@ Since this package is not yet registered, you can install it directly from GitHu
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/ChrisRackauckas-Claude/DataCollocation.jl")
+Pkg.add(url="https://github.com/SciML/DataCollocations.jl")
 ```
 
 Once registered in the General registry:
 
 ```julia
 using Pkg
-Pkg.add("DataCollocation")
+Pkg.add("DataCollocations")
 ```
 
 ## Quick Example
 
 ```julia
-using DataCollocation
+using DataCollocations
 using OrdinaryDiffEq
 
 # Generate some noisy data from an ODE
@@ -69,9 +69,9 @@ du, u = collocate_data(data, tsteps, EpanechnikovKernel())
 # u contains smoothed data
 ```
 
-## Citing DataCollocation.jl
+## Citing DataCollocations.jl
 
-If you use DataCollocation.jl in your research, please cite the collocation methodology paper:
+If you use DataCollocations.jl in your research, please cite the collocation methodology paper:
 
 ```bibtex
 @article{roesch2021collocation,

@@ -1,6 +1,6 @@
 # DataInterpolations.jl Integration
 
-DataCollocation.jl seamlessly integrates with [DataInterpolations.jl](https://github.com/SciML/DataInterpolations.jl) to provide exact interpolation methods for clean data. These methods assume minimal noise and provide exact interpolation through data points.
+DataCollocations.jl seamlessly integrates with [DataInterpolations.jl](https://github.com/SciML/DataInterpolations.jl) to provide exact interpolation methods for clean data. These methods assume minimal noise and provide exact interpolation through data points.
 
 ## When to Use DataInterpolations Methods
 
@@ -15,7 +15,7 @@ For noisy data, use the kernel smoothing methods instead.
 ## Basic Usage
 
 ```julia
-using DataCollocation, DataInterpolations
+using DataCollocations, DataInterpolations
 using Plots
 
 # Clean sparse data
@@ -73,7 +73,7 @@ du, u = collocate_data(data, t_original, t_new,
 Let's compare different interpolation methods on clean simulation data:
 
 ```julia
-using DataCollocation, DataInterpolations, Plots, OrdinaryDiffEq
+using DataCollocations, DataInterpolations, Plots, OrdinaryDiffEq
 
 # Generate clean simulation data (sparse sampling)
 function harmonic_oscillator!(du, u, p, t)
@@ -297,4 +297,4 @@ noisy_data = u_clean + noise_level * randn(size(u_clean))
 du_final, u_final = collocate_data(noisy_data, t_intermediate, EpanechnikovKernel())
 ```
 
-This page demonstrates how DataCollocation.jl's DataInterpolations integration provides exact, efficient interpolation for clean data scenarios, complementing the kernel smoothing methods for noisy data.
+This page demonstrates how DataCollocations.jl's DataInterpolations integration provides exact, efficient interpolation for clean data scenarios, complementing the kernel smoothing methods for noisy data.

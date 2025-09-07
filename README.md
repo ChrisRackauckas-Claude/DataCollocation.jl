@@ -1,13 +1,13 @@
-# DataCollocation.jl
+# DataCollocations.jl
 
-[![CI](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml)
-[![Documentation](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/documentation.yml/badge.svg)](https://chrismrackauckas-claude.github.io/DataCollocation.jl/)
+[![CI](https://github.com/SciML/DataCollocations.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/SciML/DataCollocations.jl/actions/workflows/CI.yml)
+[![Documentation](https://github.com/SciML/DataCollocations.jl/actions/workflows/documentation.yml/badge.svg)](https://sciml.github.io/DataCollocations.jl/)
 
-DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
+DataCollocations.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
 
 ## Two Approaches for Data Collocation
 
-DataCollocation.jl offers two distinct methodologies for data collocation, each optimized for different data characteristics:
+DataCollocations.jl offers two distinct methodologies for data collocation, each optimized for different data characteristics:
 
 ### 1. Kernel Smoothing Methods (For Noisy Data)
 **Robust regression-based approach for handling noisy measurements:**
@@ -47,13 +47,13 @@ DataCollocation.jl offers two distinct methodologies for data collocation, each 
 
 ```julia
 using Pkg
-Pkg.add("DataCollocation")
+Pkg.add("DataCollocations")
 ```
 
 ## Quick Start
 
 ```julia
-using DataCollocation
+using DataCollocations
 using OrdinaryDiffEq
 
 # Generate some sample data
@@ -71,7 +71,7 @@ u′, u = collocate_data(data, t, TriangularKernel(), 0.1)
 
 ## Available Kernels
 
-DataCollocation.jl supports multiple kernel functions for noisy data:
+DataCollocations.jl supports multiple kernel functions for noisy data:
 
 **Bounded Support Kernels (support on [-1, 1]):**
 - `EpanechnikovKernel()`
@@ -147,7 +147,7 @@ Contributions are welcome! Please see the [contributing guidelines](CONTRIBUTING
 
 ## Cite Us
 
-If you use DataCollocation.jl in your research, please cite the collocation methodology paper:
+If you use DataCollocations.jl in your research, please cite the collocation methodology paper:
 
 ```bibtex
 @article{roesch2021collocation,

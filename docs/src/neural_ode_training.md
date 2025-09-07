@@ -15,9 +15,9 @@ data. First the example and then an explanation.
 Before getting to the explanation, here's some code to start with. We will follow a full explanation of the definition and training process:
 
 ```@example collocation_cp
-using ComponentArrays, Lux, DataCollocation, DiffEqFlux, OrdinaryDiffEq, SciMLSensitivity, Optimization,
+using ComponentArrays, Lux, DataCollocations, DiffEqFlux, OrdinaryDiffEq, SciMLSensitivity, Optimization,
       OptimizationOptimisers, Plots
-using DataCollocation: EpanechnikovKernel
+using DataCollocations: EpanechnikovKernel
 
 using Random
 rng = Xoshiro(0)
