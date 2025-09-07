@@ -62,7 +62,10 @@ For kernels, the following exist:
   - SigmoidKernel
   - SilvermanKernel
 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2631937/
+Reference: Roesch, E., Rackauckas, C., & Stumpf, M. P. H. (2021). 
+Collocation based training of neural ordinary differential equations. 
+Statistical Applications in Genetics and Molecular Biology, 20(2), 37-49.
+https://doi.org/10.1515/sagmb-2020-0025
 
 Additionally, we can use interpolation methods from
 [DataInterpolations.jl](https://github.com/SciML/DataInterpolations.jl) to generate
