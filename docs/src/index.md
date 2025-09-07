@@ -2,7 +2,7 @@
 
 **Non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives**
 
-DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives. This package was extracted from DiffEqFlux.jl to provide a lightweight, standalone solution for data collocation tasks.
+DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
 
 ## Two Approaches for Data Collocation
 

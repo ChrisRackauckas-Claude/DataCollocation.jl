@@ -3,7 +3,7 @@
 [![CI](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml)
 [![Documentation](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/documentation.yml/badge.svg)](https://chrismrackauckas-claude.github.io/DataCollocation.jl/)
 
-DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives. This package was extracted from DiffEqFlux.jl to provide a lightweight, standalone solution for data collocation tasks.
+DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives.
 
 ## Two Approaches for Data Collocation
 
