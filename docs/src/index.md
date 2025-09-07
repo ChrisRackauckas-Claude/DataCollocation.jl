@@ -47,13 +47,19 @@ du, u = collocate_data(data, tsteps, EpanechnikovKernel())
 
 ## Citing SmoothedCollocation.jl
 
-If you use SmoothedCollocation.jl in your research, please cite:
+If you use SmoothedCollocation.jl in your research, please cite the collocation methodology paper:
 
 ```bibtex
-@article{rackauckas2020universal,
-  title={Universal differential equations for scientific machine learning},
-  author={Rackauckas, Christopher and Ma, Yingbo and Martensen, Julius and Warner, Collin and Zubov, Kirill and Supekar, Rohit and Skinner, Dominic and Ramadhan, Ali and Edelman, Alan},
-  journal={arXiv preprint arXiv:2001.04385},
-  year={2020}
+@article{roesch2021collocation,
+  title={Collocation based training of neural ordinary differential equations},
+  author={Roesch, Elisabeth and Rackauckas, Christopher and Stumpf, Michael P. H.},
+  journal={Statistical Applications in Genetics and Molecular Biology},
+  volume={20},
+  number={2},
+  pages={37--49},
+  year={2021},
+  publisher={De Gruyter},
+  doi={10.1515/sagmb-2020-0025},
+  url={https://doi.org/10.1515/sagmb-2020-0025}
 }
 ```

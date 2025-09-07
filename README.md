@@ -114,8 +114,21 @@ Contributions are welcome! Please see the [contributing guidelines](CONTRIBUTING
 - [DataInterpolations.jl](https://github.com/SciML/DataInterpolations.jl) - Interpolation methods
 - [OrdinaryDiffEq.jl](https://github.com/SciML/OrdinaryDiffEq.jl) - ODE solvers
 
-## Reference
+## Cite Us
 
-The collocation methodology is based on:
+If you use SmoothedCollocation.jl in your research, please cite the collocation methodology paper:
 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2631937/
+```bibtex
+@article{roesch2021collocation,
+  title={Collocation based training of neural ordinary differential equations},
+  author={Roesch, Elisabeth and Rackauckas, Christopher and Stumpf, Michael P. H.},
+  journal={Statistical Applications in Genetics and Molecular Biology},
+  volume={20},
+  number={2},
+  pages={37--49},
+  year={2021},
+  publisher={De Gruyter},
+  doi={10.1515/sagmb-2020-0025},
+  url={https://doi.org/10.1515/sagmb-2020-0025}
+}
+```
