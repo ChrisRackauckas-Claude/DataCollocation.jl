@@ -3,22 +3,15 @@ using SmoothedCollocation
 
 makedocs(
     sitename = "SmoothedCollocation.jl",
-    authors = "SciML Contributors",
+    authors = "SciML Contributors", 
     modules = [SmoothedCollocation],
     pages = [
         "Home" => "index.md",
-        "Tutorials" => [
-            "Getting Started" => "tutorials/getting_started.md",
-            "Kernel Selection Guide" => "tutorials/kernel_selection.md",
-        ],
         "Examples" => [
-            "Neural ODE Training" => "examples/neural_ode_training.md",
-            "Noisy Data Smoothing" => "examples/noisy_data_smoothing.md",
-            "DataInterpolations Integration" => "examples/data_interpolations.md",
+            "Smoothed Collocation for Fast Two-Stage Training" => "examples/collocation.md",
         ],
         "API Reference" => [
-            "Core Functions" => "api/core.md",
-            "Kernels" => "api/kernels.md",
+            "Smoothed Collocation" => "utilities/Collocation.md",
         ],
     ],
     format = Documenter.HTML(

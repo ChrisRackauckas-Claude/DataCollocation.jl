@@ -4,20 +4,21 @@
 
 SmoothedCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives. This package was extracted from DiffEqFlux.jl to provide a lightweight, standalone solution for data collocation tasks.
 
-## What is Smoothed Collocation?
+## Installation
 
-Smoothed collocation, also referred to as the two-stage method, allows for fitting differential equations to time series data without relying on a numerical differential equation solver by building a smoothed collocating polynomial and using this to estimate the true `(u',u)` pairs, at which point `u'-f(u,p,t)` can be directly estimated as a loss to determine the correct parameters `p`. 
+Since this package is not yet registered, you can install it directly from GitHub:
 
-This method can be extremely fast and robust to noise, though, because it does not accumulate through time, is not as exact as other methods.
+```julia
+using Pkg
+Pkg.add(url="https://github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl")
+```
 
-## Key Features
+Once registered in the General registry:
 
-- **Multiple kernel functions** for data smoothing with both bounded and unbounded support
-- **Automatic bandwidth selection** for optimal smoothing
-- **DataInterpolations.jl integration** via package extensions
-- **Derivative estimation** from noisy data
-- **Efficient implementation** with pre-allocated arrays
-- **Fast neural ODE training** through two-stage optimization
+```julia
+using Pkg
+Pkg.add("SmoothedCollocation")
+```
 
 ## Quick Example
 
@@ -43,28 +44,6 @@ du, u = collocate_data(data, tsteps, EpanechnikovKernel())
 # du contains estimated derivatives
 # u contains smoothed data
 ```
-
-## Installation
-
-Since this package is not yet registered, you can install it directly from GitHub:
-
-```julia
-using Pkg
-Pkg.add(url="https://github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl")
-```
-
-Once registered in the General registry:
-
-```julia
-using Pkg
-Pkg.add("SmoothedCollocation")
-```
-
-## Getting Started
-
-- [Getting Started Tutorial](tutorials/getting_started.md) - Learn the basics of smoothed collocation
-- [Kernel Selection Guide](tutorials/kernel_selection.md) - Choose the right kernel for your data
-- [Neural ODE Training Example](examples/neural_ode_training.md) - See how to use collocation for fast neural ODE training
 
 ## Citing SmoothedCollocation.jl
 
