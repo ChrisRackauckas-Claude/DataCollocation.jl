@@ -1,10 +1,10 @@
 using Documenter
-using SmoothedCollocation
+using DataCollocation
 
 makedocs(
-    sitename = "SmoothedCollocation.jl",
+    sitename = "DataCollocation.jl",
     authors = "SciML Contributors", 
-    modules = [SmoothedCollocation],
+    modules = [DataCollocation],
     pages = [
         "Home" => "index.md",
         "Smoothed Collocation for Fast Two-Stage Training" => "collocation.md",

@@ -1,4 +1,4 @@
-module SmoothedCollocation
+module DataCollocation
 
 using LinearAlgebra
 

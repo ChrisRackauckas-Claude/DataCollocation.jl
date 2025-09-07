@@ -1,9 +1,9 @@
-module SmoothedCollocationDataInterpolationsExt
+module DataCollocationDataInterpolationsExt
 
 using DataInterpolations: DataInterpolations
-using SmoothedCollocation: SmoothedCollocation
+using DataCollocation: DataCollocation
 
-@views function SmoothedCollocation.collocate_data(
+@views function DataCollocation.collocate_data(
         data::AbstractMatrix{T}, tpoints::AbstractVector{T},
         tpoints_sample::AbstractVector{T}, interp, args...) where {T}
     u = zeros(T, size(data, 1), length(tpoints_sample))

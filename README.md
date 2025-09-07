@@ -1,9 +1,39 @@
-# SmoothedCollocation.jl
+# DataCollocation.jl
 
-[![CI](https://github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl/actions/workflows/CI.yml)
-[![Documentation](https://github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl/actions/workflows/documentation.yml/badge.svg)](https://chrismrackauckas-claude.github.io/SmoothedCollocation.jl/)
+[![CI](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/CI.yml)
+[![Documentation](https://github.com/ChrisRackauckas-Claude/DataCollocation.jl/actions/workflows/documentation.yml/badge.svg)](https://chrismrackauckas-claude.github.io/DataCollocation.jl/)
 
-SmoothedCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives. This package was extracted from DiffEqFlux.jl to provide a lightweight, standalone solution for data collocation tasks.
+DataCollocation.jl provides non-parametric data collocation functionality for smoothing timeseries data and estimating derivatives. This package was extracted from DiffEqFlux.jl to provide a lightweight, standalone solution for data collocation tasks.
+
+## Two Approaches for Data Collocation
+
+DataCollocation.jl offers two distinct methodologies for data collocation, each optimized for different data characteristics:
+
+### 1. Kernel Smoothing Methods (For Noisy Data)
+**Robust regression-based approach for handling noisy measurements:**
+- **Multiple kernel functions**: Epanechnikov, Triangular, Gaussian, Quartic, Triweight, Tricube, Cosine, Logistic, Sigmoid, Silverman
+- **Automatic bandwidth selection**: Optimally balances bias-variance tradeoff
+- **Noise robustness**: Designed to handle measurement noise and outliers
+- **Regression splines**: Smoothed fit that doesn't necessarily pass through data points
+- **Best for**: Experimental data with significant measurement noise
+
+### 2. DataInterpolations.jl Integration (For Clean Data)
+**Exact interpolation approach for high-quality data:**
+- **Standard interpolation methods**: CubicSpline, QuadraticInterpolation, BSpline, Akima, etc.
+- **Exact fitting**: Interpolation curves pass exactly through data points
+- **Minimal noise assumption**: Assumes data points are accurate measurements
+- **High efficiency**: Fast computation for clean, well-sampled data
+- **Best for**: Simulation data or high-precision measurements with minimal noise
+
+### When to Use Each Approach
+
+| Data Characteristics | Recommended Method | Reason |
+|---------------------|-------------------|---------|
+| Experimental measurements with noise | Kernel smoothing | Robust to noise, provides smoothed estimates |
+| Simulation results | DataInterpolations | Exact, efficient, preserves accuracy |
+| Sparse, clean data | DataInterpolations (CubicSpline) | Exact interpolation between points |
+| Dense, noisy data | Kernel smoothing (Epanechnikov) | Optimal noise handling |
+| Very noisy data | [NoiseRobustDifferentiation.jl](https://adrianhill.de/NoiseRobustDifferentiation.jl/dev/examples/) | Specialized for heavy noise |
 
 ## Features
 
@@ -17,13 +47,13 @@ SmoothedCollocation.jl provides non-parametric data collocation functionality fo
 
 ```julia
 using Pkg
-Pkg.add("SmoothedCollocation")
+Pkg.add("DataCollocation")
 ```
 
 ## Quick Start
 
 ```julia
-using SmoothedCollocation
+using DataCollocation
 using OrdinaryDiffEq
 
 # Generate some sample data
@@ -41,7 +71,7 @@ u′, u = collocate_data(data, t, TriangularKernel(), 0.1)
 
 ## Available Kernels
 
-SmoothedCollocation.jl supports multiple kernel functions:
+DataCollocation.jl supports multiple kernel functions for noisy data:
 
 **Bounded Support Kernels (support on [-1, 1]):**
 - `EpanechnikovKernel()`
@@ -113,10 +143,11 @@ Contributions are welcome! Please see the [contributing guidelines](CONTRIBUTING
 - [DiffEqFlux.jl](https://github.com/SciML/DiffEqFlux.jl) - Neural differential equations
 - [DataInterpolations.jl](https://github.com/SciML/DataInterpolations.jl) - Interpolation methods
 - [OrdinaryDiffEq.jl](https://github.com/SciML/OrdinaryDiffEq.jl) - ODE solvers
+- [NoiseRobustDifferentiation.jl](https://adrianhill.de/NoiseRobustDifferentiation.jl/dev/examples/) - Specialized library for estimating derivatives from very noisy data
 
 ## Cite Us
 
-If you use SmoothedCollocation.jl in your research, please cite the collocation methodology paper:
+If you use DataCollocation.jl in your research, please cite the collocation methodology paper:
 
 ```bibtex
 @article{roesch2021collocation,
