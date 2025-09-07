@@ -102,28 +102,6 @@ The smoothed collocation is a spline fit of the data points which allows
 us to get an estimate of the approximate noiseless dynamics:
 
 ```@example collocation_cp
-using ComponentArrays, Lux, SmoothedCollocation, DiffEqFlux, Optimization, OptimizationOptimisers,
-      OrdinaryDiffEq, Plots
-using SmoothedCollocation: EpanechnikovKernel
-
-using Random
-rng = Xoshiro(0)
-
-u0 = Float32[2.0; 0.0]
-datasize = 300
-tspan = (0.0f0, 1.5f0)
-tsteps = range(tspan[1], tspan[2]; length = datasize)
-
-function trueODEfunc(du, u, p, t)
-    true_A = [-0.1 2.0; -2.0 -0.1]
-    du .= ((u .^ 3)'true_A)'
-end
-
-prob_trueode = ODEProblem(trueODEfunc, u0, tspan)
-data = Array(solve(prob_trueode, Tsit5(); saveat = tsteps)) .+ 0.1randn(2, 300)
-
-du, u = collocate_data(data, tsteps, EpanechnikovKernel())
-
 scatter(tsteps, data')
 plot!(tsteps, u'; lw = 5)
 ```
