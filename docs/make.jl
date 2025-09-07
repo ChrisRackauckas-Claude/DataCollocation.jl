@@ -1,10 +1,10 @@
 using Documenter
-using DataCollocation
+using DataCollocations
 
 makedocs(
-    sitename = "DataCollocation.jl",
+    sitename = "DataCollocations.jl",
     authors = "SciML Contributors", 
-    modules = [DataCollocation],
+    modules = [DataCollocations],
     pages = [
         "Home" => "index.md",
         "Neural ODE Training with Kernel Smoothing" => "neural_ode_training.md",
@@ -18,5 +18,5 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/ChrisRackauckas-Claude/SmoothedCollocation.jl.git"
+    repo = "github.com/SciML/DataCollocations.jl.git"
 )

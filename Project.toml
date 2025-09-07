@@ -1,4 +1,4 @@
-name = "DataCollocation"
+name = "DataCollocations"
 uuid = "9454e98c-75cb-4dbc-9573-481819719962"
 authors = ["SciML Contributors"]
 version = "0.1.0"
@@ -10,7 +10,7 @@ LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 DataInterpolations = "82cc6244-b520-54b8-b5a6-8a565e85f1d0"
 
 [extensions]
-DataCollocationDataInterpolationsExt = "DataInterpolations"
+DataCollocationsDataInterpolationsExt = "DataInterpolations"
 
 [compat]
 julia = "1.10"
