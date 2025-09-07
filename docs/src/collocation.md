@@ -17,6 +17,7 @@ Before getting to the explanation, here's some code to start with. We will follo
 ```@example collocation_cp
 using ComponentArrays, Lux, SmoothedCollocation, DiffEqFlux, OrdinaryDiffEq, SciMLSensitivity, Optimization,
       OptimizationOptimisers, Plots
+using SmoothedCollocation: EpanechnikovKernel
 
 using Random
 rng = Xoshiro(0)
@@ -100,28 +101,7 @@ plot!(nn_sol; lw = 5)
 The smoothed collocation is a spline fit of the data points which allows
 us to get an estimate of the approximate noiseless dynamics:
 
-```@example collocation
-using ComponentArrays, Lux, SmoothedCollocation, DiffEqFlux, Optimization, OptimizationOptimisers,
-      OrdinaryDiffEq, Plots
-
-using Random
-rng = Xoshiro(0)
-
-u0 = Float32[2.0; 0.0]
-datasize = 300
-tspan = (0.0f0, 1.5f0)
-tsteps = range(tspan[1], tspan[2]; length = datasize)
-
-function trueODEfunc(du, u, p, t)
-    true_A = [-0.1 2.0; -2.0 -0.1]
-    du .= ((u .^ 3)'true_A)'
-end
-
-prob_trueode = ODEProblem(trueODEfunc, u0, tspan)
-data = Array(solve(prob_trueode, Tsit5(); saveat = tsteps)) .+ 0.1randn(2, 300)
-
-du, u = collocate_data(data, tsteps, EpanechnikovKernel())
-
+```@example collocation_cp
 scatter(tsteps, data')
 plot!(tsteps, u'; lw = 5)
 ```
@@ -129,7 +109,7 @@ plot!(tsteps, u'; lw = 5)
 We can then differentiate the smoothed function to get estimates of the
 derivative at each data point:
 
-```@example collocation
+```@example collocation_cp
 plot(tsteps, du')
 ```
 
@@ -137,7 +117,7 @@ Because we have `(u',u)` pairs, we can write a loss function that
 calculates the squared difference between `f(u,p,t)` and `u'` at each
 point, and find the parameters which minimize this difference:
 
-```@example collocation
+```@example collocation_cp
 dudt2 = Chain(x -> x .^ 3, Dense(2, 50, tanh), Dense(50, 2))
 
 function loss(p)
@@ -174,7 +154,7 @@ full solution all throughout the timeseries, but it does have a drift.
 We can continue to optimize like this, or we can use this as the
 initial condition to the next phase of our fitting:
 
-```@example collocation
+```@example collocation_cp
 function predict_neuralode(p)
     Array(prob_neuralode(u0, p, st)[1])
 end
