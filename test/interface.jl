@@ -1,8 +1,24 @@
 using DataCollocations
+import DataCollocations: calckernel
 using JLArrays
 using Test
 
+struct ConstantKernel <: CollocationKernel end
+
+calckernel(::ConstantKernel, t) = one(t)
+
 @testset "Interface Compatibility" begin
+    @testset "Custom kernel extension" begin
+        tpoints = collect(range(0.0, stop = 1.0, length = 30))
+        data = sin.(tpoints)
+
+        @test calckernel(ConstantKernel(), 2.0) == 1.0
+
+        du, u = collocate_data(data, tpoints, ConstantKernel(), 1.0)
+        @test length(du) == length(tpoints)
+        @test length(u) == length(tpoints)
+    end
+
     @testset "BigFloat support" begin
         # Test that BigFloat inputs are supported and eltype is preserved
         tpoints = BigFloat.(collect(range(0.0, stop = 10.0, length = 30)))
