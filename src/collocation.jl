@@ -1,3 +1,14 @@
+"""
+    CollocationKernel
+
+Abstract interface for smoothing kernels used by [`collocate_data`](@ref).
+
+To define a custom kernel, subtype `CollocationKernel` and implement
+[`calckernel`](@ref) for the custom type and a scalar evaluation point. The
+method must return the kernel weight without mutating either argument. Its
+result must be compatible with the element type of the data and time points
+passed to `collocate_data`.
+"""
 abstract type CollocationKernel end
 
 """
@@ -77,6 +88,15 @@ Silverman smoothing kernel for `collocate_data`.
 """
 struct SilvermanKernel <: CollocationKernel end
 
+"""
+    calckernel(kernel, t)
+
+Evaluate a [`CollocationKernel`](@ref) at scalar point `t`.
+
+Custom `CollocationKernel` subtypes must implement this generic function. The
+method must return a scalar kernel weight, preserve compatibility with `t`'s
+numeric type, and not mutate its arguments.
+"""
 function calckernel(kernel::CollocationKernel, t::T) where {T}
     abst = abs(t)
     return ifelse(abst > 1, T(0), calckernel(kernel, t, abst))

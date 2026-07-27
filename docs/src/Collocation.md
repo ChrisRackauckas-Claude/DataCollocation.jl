@@ -18,6 +18,8 @@ the ODE forward.
 
 ```@docs
 collocate_data
+CollocationKernel
+calckernel
 EpanechnikovKernel
 UniformKernel
 TriangularKernel
