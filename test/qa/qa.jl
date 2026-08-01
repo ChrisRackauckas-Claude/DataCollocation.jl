@@ -1,5 +1,3 @@
-# DataInterpolations is loaded so that DataCollocationsDataInterpolationsExt exists:
-# ExplicitImports only scans an extension module once its trigger package is loaded.
 using DataCollocations, DataInterpolations, SciMLTesting, Test
 
 # ExplicitImports silently skips an extension that fails to load, so assert the
