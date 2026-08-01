@@ -8,14 +8,4 @@ using DataCollocations, DataInterpolations, SciMLTesting, Test
     @test Base.get_extension(DataCollocations, :DataCollocationsDataInterpolationsExt) !== nothing
 end
 
-run_qa(
-    DataCollocations;
-    ei_kwargs = (;
-        all_qualified_accesses_are_public = (;
-            # DataInterpolations: `derivative` is the documented way to differentiate an
-            # interpolation object, but DataInterpolations neither exports it nor declares
-            # it `public`, so there is no public spelling to use instead.
-            ignore = (:derivative,),
-        ),
-    ),
-)
+run_qa(DataCollocations)
